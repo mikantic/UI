@@ -1,2 +1,0 @@
-this repository will contain my ui for games, such as color palettes, ui prefabs, scripts, etc
-can probably be paired with a mikantic-core for more backend related stuff that doesnt need unity?
