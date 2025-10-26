@@ -7,18 +7,20 @@ namespace UI.Tools
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class Observer<T> : MonoBehaviour
-    {   
-        protected abstract void UpdateFrontend(T value);
-
+    {
+        protected abstract void UpdateFrontEnd(T value);
         public virtual void Link(Core.Tools.Observable<T> observable)
         {
-            observable.OnValueChanged += UpdateFrontend;
-            UpdateFrontend(observable.Value);
+            observable.OnValueChanged += UpdateFrontEnd;
+            UpdateFrontEnd(observable.Value);
         }
-    
+
         public virtual void Unlink(Core.Tools.Observable<T> observable)
         {
-            observable.OnValueChanged -= UpdateFrontend;
+            observable.OnValueChanged -= UpdateFrontEnd;
         }
+
+        protected abstract void Awake();
+        protected abstract void Start();
     }
 }

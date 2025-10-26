@@ -22,14 +22,24 @@ namespace UI.Bar
         /// </summary>
         [SerializeField] private Image _decrease;
 
+
+        protected override void Awake()
+        {
+            
+        }
+
+        protected override void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// syncs image fill amounts with value
         /// </summary>
         /// <param name="clamp"></param>
-        protected override void UpdateFrontend(Clamp<float> clamp)
+        protected override void UpdateFrontEnd(Clamp<float> value)
         {
-            float lerp = (clamp.Value - clamp.Min) / (clamp.Max - clamp.Min);
-            _value.fillAmount = lerp;
+            
         }
     }   
 }
