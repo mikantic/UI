@@ -46,12 +46,8 @@ namespace UI.Palettes
                 if (_instance == null)
                 {
                     string path = $"UI/Palette/Objects/{typeof(T).Name}";
-                    Debug.Log(path);
-                    _instance = Resources.Load<Palette<T>>(path); // Assuming asset is in Resources/GameSettings.asset
-                    if (_instance == null)
-                    {
-                        Debug.LogError("Palettes ScriptableObject not found in Resources folder!");
-                    }
+                    _instance = Resources.Load<Palette<T>>(path);
+                    if (_instance == null) Debug.LogError($"{path} not found");
                 }
                 return _instance;
             }
