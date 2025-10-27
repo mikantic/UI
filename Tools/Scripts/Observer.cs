@@ -6,21 +6,20 @@ namespace UI.Tools
     /// class for components that want to display backend data without editing
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Observer<T> : MonoBehaviour
+    public abstract class Observer<O, T> : MonoBehaviour where O : Core.Tools.Observable<T>
     {
         protected abstract void UpdateFrontEnd(T value);
-        public virtual void Link(Core.Tools.Observable<T> observable)
+        public virtual void Link(O observable)
         {
             observable.OnValueChanged += UpdateFrontEnd;
             UpdateFrontEnd(observable.Value);
         }
 
-        public virtual void Unlink(Core.Tools.Observable<T> observable)
+        public virtual void Unlink(O observable)
         {
             observable.OnValueChanged -= UpdateFrontEnd;
         }
-
-        protected abstract void Awake();
-        protected abstract void Start();
     }
+
+    public abstract class Observer<T> : Observer<Core.Tools.Observable<T>, T> { }
 }
